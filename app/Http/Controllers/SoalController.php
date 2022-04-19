@@ -16,6 +16,21 @@ class SoalController extends Controller
 
     public function create()
     {
-        return view('soal.create');
+        return view('soal/create');
+    }
+    public function store(Request $request)
+
+    {
+        //dd($request->all());
+        
+        soal::create($request->all());
+        return redirect(url('data-soal'));
+
+    }
+    
+    public function destroy(Soal $id)
+    {
+        $id->delete();
+        return redirect(url('data-soal'));
     }
 }

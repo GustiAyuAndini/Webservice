@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col6">
         <div class="card">
-            <div class="card-header">Data Soal <a class="btn btn-primary float-right" href="{{url('soal/tambah')}}">Tambah</a> </div>
+            <div class="card-header">Data Soal <a class="btn btn-primary float-right" href="{{url('add-soal')}}">Tambah</a> </div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>
@@ -25,7 +25,12 @@
                             <td>{{ $row->dosen }}</td>
                             <td>{{ $row->jumlah_soal }}</td>
                             <td>{{ $row->keterangan }}</td>
-                            <td></td>
+                            <td>
+                            <form action="{{route('delete.soal', $row->id)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda Yakin ?')">Hapus</button>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

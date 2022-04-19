@@ -25,9 +25,11 @@ Route::get('/dari-view', function(){
 Route::view('master', 'template/master');
 
 //route untuk mahasiswa
-Route::get('data-mahasiswa', [MahasiswaC::class, 'index']);
-Route::get('add-mahasiswa', [MahasiswaC::class, 'create']);
+Route::get('data-mahasiswa', [MahasiswaController::class, 'index']);
+Route::get('add-mahasiswa', [MahasiswaController::class, 'create']);
 
 //CRUD Data
-Route::get('soal', [SoalController::class, 'index']);
-Route::get('soal/tambah', [SoalController::class, 'create']);
+Route::get('data-soal', [SoalController::class, 'index']);
+Route::get('add-soal', [SoalController::class, 'create']);
+Route::post('save-soal', [SoalController::class, 'store']);
+Route::delete('delete-soal/{id}', [SoalController::class, 'destroy'])->name('delete.soal');
